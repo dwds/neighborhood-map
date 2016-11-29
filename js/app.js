@@ -14,3 +14,10 @@ var locations = [
     }
   }
 ];
+
+var Location = function(data) {
+  this.name = ko.observable(data.name);
+  this.location = ko.observable(data.location);
+  this.lat = ko.observable(data.location.lat);
+  this.lng = ko.observable(data.location.lng);
+}
