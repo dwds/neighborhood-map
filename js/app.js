@@ -21,3 +21,15 @@ var Location = function(data) {
   this.lat = ko.observable(data.location.lat);
   this.lng = ko.observable(data.location.lng);
 }
+
+var ViewModel = function () {
+  var self = this;
+
+  this.locationList = ko.observableArray([]);
+
+  locations.forEach(function(location){
+    self.locationList.push(new Location(location));
+  });
+}
+
+ko.applyBindings(new ViewModel());
