@@ -25,7 +25,7 @@ var Location = function(data) {
 var ViewModel = function () {
   var self = this;
 
-  this.locationList = ko.observableArray([]);
+  self.locationList = ko.observableArray([]);
 
   locations.forEach(function(location){
     self.locationList.push(new Location(location));
