@@ -21,9 +21,71 @@ var locations = [
       "church",
       "school"
     ]
+  },
+  {
+    name: 'Pizzeria Tivoli',
+    position: {
+      lat: 38.577014,
+      lng: -90.283338
+    },
+    type: [
+      "restaurant"
+    ]
+  },
+  {
+    name: 'Onesta Pizza & Trattoria',
+    position: {
+      lat: 38.576575,
+      lng: -90.286825
+    },
+    type: [
+      "PokeStop",
+      "restaurant"
+    ]
+  },
+  {
+    name: 'Salon Soha',
+    position: {
+      lat:  38.578382,
+      lng: -90.285556
+    },
+    type: [
+      "salon",
+      "shop"
+    ]
+  },
+  {
+    name: 'South Side Cyclery',
+    position: {
+      lat:  38.568933,
+      lng: -90.287165
+    },
+    type: [
+      "shop"
+    ]
+  },
+  {
+    name: 'Gateway Science Academy South',
+    position: {
+      lat:  38.572118,
+      lng: -90.283502
+    },
+    type: [
+      "school"
+    ]
+  },
+  {
+    name: 'Fifth Spiritualist Church',
+    position: {
+      lat:  38.575149,
+      lng: -90.283556
+    },
+    type: [
+      "church",
+      "PokeStop"
+    ]
   }
 ];
-
 
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
