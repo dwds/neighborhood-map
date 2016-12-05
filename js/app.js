@@ -1,7 +1,7 @@
 var locations = [
   {
     name: 'Smoking Barrels',
-    location: {
+    position: {
       lat: 38.579166,
       lng: -90.28124
     },
@@ -12,7 +12,7 @@ var locations = [
   },
   {
     name: 'Our Lady of Sorrows',
-    location: {
+    posiiton: {
       lat: 38.577946,
       lng: -90.28336
     },
@@ -46,7 +46,7 @@ function initMap() {
   });
   $.each(locations, function(key, location) {
     location.marker = new google.maps.Marker({
-      position: location.location,
+      position: location.position,
       map: map,
       title: location.name
     });
