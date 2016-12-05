@@ -12,7 +12,7 @@ var locations = [
   },
   {
     name: 'Our Lady of Sorrows',
-    posiiton: {
+    position: {
       lat: 38.577946,
       lng: -90.28336
     },
