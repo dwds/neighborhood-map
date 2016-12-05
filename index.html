@@ -34,14 +34,6 @@
         center: {lat: 38.579166, lng: -90.28124},
         zoom: 15
       });
-
-      $.each(locations, function(key, location) {
-        var marker = new google.maps.Marker({
-          position: location.location,
-          map: map,
-          title: location.name
-        });
-      });
     }
   </script>
 

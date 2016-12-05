@@ -49,6 +49,13 @@ var ViewModel = function () {
     self.locationList.push(location);
   });
 
+  $.each(locations, function(key, location) {
+    var marker = new google.maps.Marker({
+      position: location.location,
+      map: map,
+      title: location.name
+    });
+  });
 
   self.filter.subscribe(function() {
     self.locationList([]);
