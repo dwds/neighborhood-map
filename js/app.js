@@ -29,7 +29,7 @@ var locations = [
  * For each location, loop through its type array and add
  * any new types to the locationTypes array.
  */
-var locationTypes = [];
+var locationTypes = ['all'];
 $.each(locations, function(key, location) {
   $.each(location.type, function(key, type){
     if($.inArray(type ,locationTypes) === -1) {
@@ -38,20 +38,31 @@ $.each(locations, function(key, location) {
   });
 });
 
-var Location = function(data) {
-  this.name = ko.observable(data.name);
-  this.location = ko.observable(data.location);
-  this.lat = ko.observable(data.location.lat);
-  this.lng = ko.observable(data.location.lng);
-}
-
 var ViewModel = function () {
   var self = this;
 
   self.locationList = ko.observableArray([]);
 
+  self.filter = ko.observable('all');
+
   locations.forEach(function(location){
-    self.locationList.push(new Location(location));
+    self.locationList.push(location);
+  });
+
+
+  self.filter.subscribe(function() {
+    self.locationList([]);
+    if(self.filter() === 'all') {
+      locations.forEach(function(location){
+        self.locationList.push(location);
+      });
+    } else {
+      $.each(locations, function(key, location) {
+        if($.inArray(self.filter(), location.type) > -1) {
+          self.locationList.push(location);
+        }
+      });
+    }
   });
 }
 
