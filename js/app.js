@@ -4,14 +4,23 @@ var locations = [
     location: {
       lat: 38.579166,
       lng: -90.28124
-    }
+    },
+    type: [
+      "PokeStop",
+      "restaurant"
+    ]
   },
   {
     name: 'Our Lady of Sorrows',
     location: {
       lat: 38.577946,
       lng: -90.28336
-    }
+    },
+    type: [
+      "PokeStop",
+      "church",
+      "school"
+    ]
   }
 ];
 
