@@ -24,6 +24,20 @@ var locations = [
   }
 ];
 
+
+/* Create an array of locationTypes based on location data.
+ * For each location, loop through its type array and add
+ * any new types to the locationTypes array.
+ */
+var locationTypes = [];
+$.each(locations, function(key, location) {
+  $.each(location.type, function(key, type){
+    if($.inArray(type ,locationTypes) === -1) {
+      locationTypes.push(type)
+    }
+  });
+});
+
 var Location = function(data) {
   this.name = ko.observable(data.name);
   this.location = ko.observable(data.location);
