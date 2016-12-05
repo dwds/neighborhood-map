@@ -116,6 +116,7 @@ function initMap() {
     location.infoWindow = new google.maps.InfoWindow({
       content: location.name
     });
+    // TODO: separate this out into a named function
     location.marker.addListener('click', function() {
       location.infoWindow.open(map, location.marker);
       if (location.marker.getAnimation() == null) {
@@ -127,6 +128,8 @@ function initMap() {
     });
   });
 }
+
+// TODO: create location object constructor
 
 var ViewModel = function () {
   var self = this;
