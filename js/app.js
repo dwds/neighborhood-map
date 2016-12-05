@@ -55,6 +55,12 @@ function initMap() {
     });
     location.marker.addListener('click', function() {
       location.infoWindow.open(map, location.marker);
+      if (location.marker.getAnimation() == null) {
+        location.marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){
+          location.marker.setAnimation(null);
+        }, 700);
+      }
     });
   });
 }
