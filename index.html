@@ -11,6 +11,9 @@
   <body>
     <h1>Princetons Heights, St. Louis, MO</h1>
     <h2>Points of Interest</h2>
+    <p>
+      Filter: <select data-bind="options: locationTypes, value: filterLocations()"></select>
+    </p>
     <ul class="location-list" data-bind="foreach: locationList">
       <li data-bind="text: name"></li>
     </ul>
