@@ -48,7 +48,8 @@ function initMap() {
     location.marker = new google.maps.Marker({
       position: location.position,
       map: map,
-      title: location.name
+      title: location.name,
+      label: location.name[0]
     });
     location.infoWindow = new google.maps.InfoWindow({
       content: location.name
