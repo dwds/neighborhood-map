@@ -50,6 +50,12 @@ function initMap() {
       map: map,
       title: location.name
     });
+    location.infoWindow = new google.maps.InfoWindow({
+      content: location.name
+    });
+    location.marker.addListener('click', function() {
+      location.infoWindow.open(map, location.marker);
+    });
   });
 }
 
