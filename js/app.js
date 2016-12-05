@@ -64,7 +64,7 @@ var ViewModel = function () {
     self.locationList.push(location);
   });
 
-  self.filter.subscribe(function() {
+  self.filterLocations = function() {
     self.locationList([]);
     if(self.filter() === 'all') {
       locations.forEach(function(location){
@@ -81,7 +81,9 @@ var ViewModel = function () {
         }
       });
     }
-  });
+  };
+
+  self.filter.subscribe(self.filterLocations);
 }
 
 ko.applyBindings(new ViewModel());
