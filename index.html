@@ -31,10 +31,13 @@
         center: {lat: 38.579166, lng: -90.28124},
         zoom: 13
       });
-      var marker = new google.maps.Marker({
-        position: {lat: 38.579166, lng: -90.28124},
-        map: map,
-        title: 'Smoking Barrels'
+
+      $.each(locations, function(key, location) {
+        var marker = new google.maps.Marker({
+          position: location.location,
+          map: map,
+          title: location.name
+        });
       });
     }
   </script>
