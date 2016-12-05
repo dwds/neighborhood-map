@@ -38,6 +38,21 @@ $.each(locations, function(key, location) {
   });
 });
 
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 38.579166, lng: -90.28124},
+    zoom: 15
+  });
+  $.each(locations, function(key, location) {
+    location.marker = new google.maps.Marker({
+      position: location.location,
+      map: map,
+      title: location.name
+    });
+  });
+}
+
 var ViewModel = function () {
   var self = this;
 
@@ -49,24 +64,20 @@ var ViewModel = function () {
     self.locationList.push(location);
   });
 
-  $.each(locations, function(key, location) {
-    var marker = new google.maps.Marker({
-      position: location.location,
-      map: map,
-      title: location.name
-    });
-  });
-
   self.filter.subscribe(function() {
     self.locationList([]);
     if(self.filter() === 'all') {
       locations.forEach(function(location){
         self.locationList.push(location);
+        location.marker.setMap(map);
       });
     } else {
       $.each(locations, function(key, location) {
         if($.inArray(self.filter(), location.type) > -1) {
           self.locationList.push(location);
+          location.marker.setMap(map);
+        } else {
+          location.marker.setMap(null);
         }
       });
     }
