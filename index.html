@@ -11,23 +11,30 @@
   <body>
     <h1>Princetons Heights, St. Louis, MO</h1>
     <h2>Points of Interest</h2>
+
+    <!-- Filter menu -->
     <p>
+      <!-- Pull from list of locationTypes to create select menu options.
+           Selected option will change the value of filter. -->
       Filter: <select data-bind="options: locationTypes, value: filter"></select>
     </p>
+
     <!-- TODO: show info & animate marker on click -->
+    <!-- Create a list view based on the names in the current locationList -->
     <ul class="location-list" data-bind="foreach: locationList">
       <li data-bind="text: name"></li>
     </ul>
 
+  <!-- Google map container -->
   <div id="map"></div>
 
+  <!-- scripts & libraries -->
   <script
   			  src="https://code.jquery.com/jquery-3.1.1.min.js"
   			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   			  crossorigin="anonymous"></script>
   <script src="js/libs/knockout-3.2.0.js"></script>
   <script src="js/app.js"></script>
-
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqnm-1Qg9K4y8hy6xtd7asPVvRKdMzZ34&v=3&callback=initMap">
   </script>
