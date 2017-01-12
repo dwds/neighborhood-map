@@ -123,18 +123,21 @@ function initMap() {
     location.infoWindow = new google.maps.InfoWindow({
       content: location.name
     });
-    // TODO: separate this out into a named function
-    // when marker is clicked, animate it and open its infoWindow
     location.marker.addListener('click', function() {
-      location.infoWindow.open(map, location.marker);
-      if (location.marker.getAnimation() == null) {
-        location.marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function(){
-          location.marker.setAnimation(null);
-        }, 700);
-      }
+      showInfo(location);
     });
   });
+}
+
+// animate location's marker and open its infoWindow
+function showInfo(location) {
+  location.infoWindow.open(map, location.marker);
+  if (location.marker.getAnimation() == null) {
+    location.marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){
+      location.marker.setAnimation(null);
+    }, 700);
+  }
 }
 
 // TODO: create location object constructor
