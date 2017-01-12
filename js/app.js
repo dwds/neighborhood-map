@@ -140,8 +140,6 @@ function showInfo(location) {
   }
 }
 
-// TODO: create location object constructor
-
 var ViewModel = function () {
   var self = this;
 
