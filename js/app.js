@@ -5,6 +5,7 @@ var locations = [
       lat: 38.579166,
       lng: -90.28124
     },
+    instaID: 85031244,
     type: [
       "PokeStop",
       "restaurant"
@@ -16,6 +17,7 @@ var locations = [
       lat: 38.577946,
       lng: -90.28336
     },
+    instaID: 220348989,
     type: [
       "PokeStop",
       "church",
@@ -28,6 +30,7 @@ var locations = [
       lat: 38.577014,
       lng: -90.283338
     },
+    instaID: 1339749,
     type: [
       "restaurant"
     ]
@@ -38,6 +41,7 @@ var locations = [
       lat: 38.576575,
       lng: -90.286825
     },
+    instaID: 2137382,
     type: [
       "PokeStop",
       "restaurant"
@@ -49,6 +53,7 @@ var locations = [
       lat:  38.578382,
       lng: -90.285556
     },
+    instaID: 69364819,
     type: [
       "salon",
       "shop"
@@ -60,6 +65,7 @@ var locations = [
       lat:  38.568933,
       lng: -90.287165
     },
+    instaID: 19110494,
     type: [
       "shop"
     ]
@@ -70,6 +76,7 @@ var locations = [
       lat:  38.572118,
       lng: -90.283502
     },
+    instaID: 568089953,
     type: [
       "school"
     ]
@@ -80,6 +87,7 @@ var locations = [
       lat:  38.575149,
       lng: -90.283556
     },
+    instaID: 548409982,
     type: [
       "church",
       "PokeStop"
