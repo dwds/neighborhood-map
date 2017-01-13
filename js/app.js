@@ -84,6 +84,17 @@ var locations = [
       "church",
       "PokeStop"
     ]
+  },
+  {
+    name: 'Cafe Nova',
+    position: {
+      lat: 38.579255776261,
+      lng: -90.281419444122
+    },
+    instaID: 18350600,
+    type: [
+      "restaurant"
+    ]
   }
 ];
 
