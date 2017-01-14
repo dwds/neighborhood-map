@@ -106,6 +106,55 @@ var locations = [
   }
 ];
 
+// Instagram API
+var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
+var QUERY_BASE = "https://api.instagram.com/v1/locations/";
+var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
+
+function loadInstaPic(locationID, cb) {
+  $.ajax({
+    url: QUERY_BASE + locationID + QUERY_PATH,
+    dataType: "jsonp",
+    success: function (result){
+      console.log(result);
+        var imageURL320 = result.data[0].images.low_resolution.url;
+        var imageURL150 = result.data[0].images.thumbnail.url;
+        var imageCreatedTime = result.data[0].created_time;
+        var imageLink = result.data[0].link;
+        var imageUsername = result.data[0].username;
+        var imageUserLink = "https://www.instagram.com/" + imageUsername;
+      // var container = $('.feed'),
+      //   title = $('.header-title'),
+      //   entries = result.feed.entries,
+      //   entriesLen = entries.length,
+      //   entryTemplate = Handlebars.compile($('.tpl-entry').html());
+      //
+      // title.html(feedName);   // Set the header text
+      // container.empty();      // Empty out all previous entries
+
+      /* Loop through the entries we just loaded via the Google
+       * Feed Reader API. We'll then parse that entry against the
+       * entryTemplate (created above using Handlebars) and append
+       * the resulting HTML to the list of entries on the page.
+       */
+      // entries.forEach(function(entry) {
+      //     container.append(entryTemplate(entry));
+      // });
+
+      if (cb) {
+          cb();
+      }
+    },
+    error: function (result, status, err){
+      //run only the callback without attempting to parse result due to error
+      if (cb) {
+          cb();
+      }
+    }
+  });
+}
+
+loadInstaPic(220348989, function(){});
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
  * any new types to the locationTypes array.
