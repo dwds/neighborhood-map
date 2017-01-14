@@ -6,6 +6,7 @@ var locations = [
       lng: -90.28124
     },
     instaID: 85031244,
+    instaPic: {},
     type: [
       "PokeStop",
       "restaurant"
@@ -18,6 +19,7 @@ var locations = [
       lng: -90.28336
     },
     instaID: 220348989,
+    instaPic: {},
     type: [
       "PokeStop",
       "church",
@@ -31,6 +33,7 @@ var locations = [
       lng: -90.283338
     },
     instaID: 1339749,
+    instaPic: {},
     type: [
       "restaurant"
     ]
@@ -42,6 +45,7 @@ var locations = [
       lng: -90.286825
     },
     instaID: 2137382,
+    instaPic: {},
     type: [
       "PokeStop",
       "restaurant"
@@ -54,6 +58,7 @@ var locations = [
       lng: -90.285556
     },
     instaID: 69364819,
+    instaPic: {},
     type: [
       "salon",
       "shop"
@@ -66,6 +71,7 @@ var locations = [
       lng: -90.287165
     },
     instaID: 19110494,
+    instaPic: {},
     type: [
       "shop"
     ]
@@ -77,6 +83,7 @@ var locations = [
       lng: -90.283502
     },
     instaID: 568089953,
+    instaPic: {},
     type: [
       "school"
     ]
@@ -88,6 +95,7 @@ var locations = [
       lng: -90.283556
     },
     instaID: 548409982,
+    instaPic: {},
     type: [
       "church",
       "PokeStop"
@@ -100,6 +108,7 @@ var locations = [
       lng: -90.281419444122
     },
     instaID: 18350600,
+    instaPic: {},
     type: [
       "restaurant"
     ]
@@ -111,38 +120,34 @@ var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
 
-function loadInstaPic(location) {
+function getInstaPic(location) {
   $.ajax({
     url: QUERY_BASE + location.instaID + QUERY_PATH,
     dataType: "jsonp",
     success: function (result){
-      console.log(result);
-
-      var imageURL320 = result.data[0].images.low_resolution.url;
-      var imageURL150 = result.data[0].images.thumbnail.url;
-      var imageCreatedTime = result.data[0].created_time;
-      var imageLink = result.data[0].link;
-      var imageUsername = result.data[0].username;
-      var imageUserLink = "https://www.instagram.com/" + imageUsername;
+      if(result.data.length > 0) {
+        console.log(location);
+        console.log(location.instaPic);
+        location.instaPic.imgSrc = result.data[0].images.thumbnail.url;
+        location.instaPic.creationTime = result.data[0].created_time;
+        location.instaPic.imgLink = result.data[0].link;
+        location.instaPic.userName = result.data[0].user.username;
+        location.instaPic.userLink = "https://www.instagram.com/" + location.instaPic.userName;
+        location.instaPic.error = null;
+      } else {
+        location.instaPic.error = "There are no Intagram pics tagged with this location!";
+      }
     },
     error: function (result, status, err){
       console.log("error");
+      location.instaPic.error = "Could not access Instagram";
     }
   });
 }
 
-loadInstaPic({
-  name: 'Our Lady of Sorrows',
-  position: {
-    lat: 38.577946,
-    lng: -90.28336
-  },
-  instaID: 220348989,
-  type: [
-    "PokeStop",
-    "church",
-    "school"
-  ]
+$.each(locations, function(key, location) {
+  getInstaPic(location);
+  console.log(location);
 });
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
