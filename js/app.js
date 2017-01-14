@@ -111,33 +111,39 @@ var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
 
-function loadInstaPic(locationID, cb) {
+function loadInstaPic(location) {
   $.ajax({
-    url: QUERY_BASE + locationID + QUERY_PATH,
+    url: QUERY_BASE + location.instaID + QUERY_PATH,
     dataType: "jsonp",
     success: function (result){
       console.log(result);
+
       var imageURL320 = result.data[0].images.low_resolution.url;
       var imageURL150 = result.data[0].images.thumbnail.url;
       var imageCreatedTime = result.data[0].created_time;
       var imageLink = result.data[0].link;
       var imageUsername = result.data[0].username;
       var imageUserLink = "https://www.instagram.com/" + imageUsername;
-
-      if (cb) {
-          cb();
-      }
     },
     error: function (result, status, err){
-      //run only the callback without attempting to parse result due to error
-      if (cb) {
-          cb();
-      }
+      console.log("error");
     }
   });
 }
 
-loadInstaPic(220348989, function(){});
+loadInstaPic({
+  name: 'Our Lady of Sorrows',
+  position: {
+    lat: 38.577946,
+    lng: -90.28336
+  },
+  instaID: 220348989,
+  type: [
+    "PokeStop",
+    "church",
+    "school"
+  ]
+});
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
  * any new types to the locationTypes array.
@@ -172,7 +178,8 @@ function initMap() {
     });
     // create infoWindow
     location.infoWindow = new google.maps.InfoWindow({
-      content: location.name
+    //  content: location.name
+      content: '<figure><img src="https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/15877252_252258305187798_8849612120057184256_n.jpg?ig_cache_key=MTQyNjUyNjc5OTYwNTQ3NDM3MQ%3D%3D.2"><figcaption>' + location.name + '</figcaption>'
     });
     location.marker.addListener('click', function() {
       showInfo(location);
