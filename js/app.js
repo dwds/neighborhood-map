@@ -116,6 +116,7 @@ var locations = [
 ];
 
 // Instagram API
+// URL parts
 var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
@@ -125,21 +126,27 @@ function getInstaPic(location) {
     url: QUERY_BASE + location.instaID + QUERY_PATH,
     dataType: "jsonp",
     success: function (result){
-      if(result.data.length > 0) {
-        console.log(location);
-        console.log(location.instaPic);
-        location.instaPic.imgSrc = result.data[0].images.thumbnail.url;
-        location.instaPic.creationTime = result.data[0].created_time;
-        location.instaPic.imgLink = result.data[0].link;
-        location.instaPic.userName = result.data[0].user.username;
-        location.instaPic.userLink = "https://www.instagram.com/" + location.instaPic.userName;
-        location.instaPic.error = null;
+      if(result.meta.code === 200) {
+        // got a good result
+        if(result.data.length > 0) {
+          // if there is at least one pic
+          location.instaPic.imgSrc = result.data[0].images.thumbnail.url;
+          location.instaPic.creationTime = result.data[0].created_time;
+          location.instaPic.imgLink = result.data[0].link;
+          location.instaPic.userName = result.data[0].user.username;
+          location.instaPic.userLink = "https://www.instagram.com/" + location.instaPic.userName;
+          location.instaPic.error = null;
+        } else {
+          // there were not any pics
+          location.instaPic.error = "There are no Intagram pics tagged with this location!";
+        }
       } else {
-        location.instaPic.error = "There are no Intagram pics tagged with this location!";
+        // Something wrong with the query
+        location.instaPic.error = "Could not access Instagram";
       }
     },
     error: function (result, status, err){
-      console.log("error");
+      // ajax request failed
       location.instaPic.error = "Could not access Instagram";
     }
   });
@@ -147,8 +154,8 @@ function getInstaPic(location) {
 
 $.each(locations, function(key, location) {
   getInstaPic(location);
-  console.log(location);
 });
+
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
  * any new types to the locationTypes array.
