@@ -117,29 +117,12 @@ function loadInstaPic(locationID, cb) {
     dataType: "jsonp",
     success: function (result){
       console.log(result);
-        var imageURL320 = result.data[0].images.low_resolution.url;
-        var imageURL150 = result.data[0].images.thumbnail.url;
-        var imageCreatedTime = result.data[0].created_time;
-        var imageLink = result.data[0].link;
-        var imageUsername = result.data[0].username;
-        var imageUserLink = "https://www.instagram.com/" + imageUsername;
-      // var container = $('.feed'),
-      //   title = $('.header-title'),
-      //   entries = result.feed.entries,
-      //   entriesLen = entries.length,
-      //   entryTemplate = Handlebars.compile($('.tpl-entry').html());
-      //
-      // title.html(feedName);   // Set the header text
-      // container.empty();      // Empty out all previous entries
-
-      /* Loop through the entries we just loaded via the Google
-       * Feed Reader API. We'll then parse that entry against the
-       * entryTemplate (created above using Handlebars) and append
-       * the resulting HTML to the list of entries on the page.
-       */
-      // entries.forEach(function(entry) {
-      //     container.append(entryTemplate(entry));
-      // });
+      var imageURL320 = result.data[0].images.low_resolution.url;
+      var imageURL150 = result.data[0].images.thumbnail.url;
+      var imageCreatedTime = result.data[0].created_time;
+      var imageLink = result.data[0].link;
+      var imageUsername = result.data[0].username;
+      var imageUserLink = "https://www.instagram.com/" + imageUsername;
 
       if (cb) {
           cb();
