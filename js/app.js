@@ -116,20 +116,21 @@ var locations = [
 ];
 
 // Instagram API
-// URL parts
+// URL query parts
 var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
 
-function getInstaPic(location, cb) {
+function getInstaPic(location) {
   $.ajax({
+    // query Instagram API based on location ID
     url: QUERY_BASE + location.instaID + QUERY_PATH,
     dataType: "jsonp",
     success: function (result){
       if(result.meta.code === 200) {
-        // got a good result
+        // got a good result (200 = OK)
         if(result.data.length > 0) {
-          // if there is at least one pic
+          // if there is at least one pic, get info about first pic
           location.instaPic.imgSrc = result.data[0].images.thumbnail.url;
           location.instaPic.creationTime = result.data[0].created_time;
           location.instaPic.imgLink = result.data[0].link;
@@ -144,43 +145,40 @@ function getInstaPic(location, cb) {
         // Something wrong with the query
         location.instaPic.error = "Could not access Instagram";
       }
-      if(cb) {
-        cb(location);
-      }
+      createInfoWindow(location);
     },
     error: function (result, status, err){
       // ajax request failed
       location.instaPic.error = "Could not access Instagram";
-      if(cb) {
-        cb(location);
-      }
+      createInfoWindow(location);
     }
   });
 }
 
 function createInfoWindow(location) {
-  var contentString = '<div class="info-window">';
-  contentString += '<p class="info-title">' + location.name + '</p>';
+  var infoContent = '<div class="info-window">';
+  infoContent += '<p class="info-title">' + location.name + '</p>';
   if(location.instaPic.error) {
-    contentString += '<p class="info-error">' + location.instaPic.error +
+    infoContent += '<p class="info-error">' + location.instaPic.error +
       '</p>';
   } else {
-    contentString += '<figure><a href="' + location.instaPic.imgLink +
-      '"><img src="' + location.instaPic.imgSrc + '" alt="' + location.name
-      + ' by Instagram user ' + location.instaPic.userName +
-      '"></a><figcaption>Photo by <a href="' + location.instaPic.userLink +
-      '">' + location.instaPic.userName + '</a></figcaption></figure>';
+    infoContent += '<figure><a target="_blank" href="' +
+      location.instaPic.imgLink + '"><img src="' + location.instaPic.imgSrc +
+      '" alt="' + location.name + ' by Instagram user ' +
+      location.instaPic.userName +
+      '"></a><figcaption>Photo by <a target="_blank" href="' +
+      location.instaPic.userLink + '">' + location.instaPic.userName +
+      '</a></figcaption></figure>';
   }
-  contentString += '</div>';
-  location.infoContent = contentString;
+  infoContent += '</div>';
   // create infoWindow
   location.infoWindow = new google.maps.InfoWindow({
-    content: location.infoContent
+    content: infoContent
   });
 }
 
 $.each(locations, function(key, location) {
-  getInstaPic(location, createInfoWindow);
+  getInstaPic(location);
 });
 
 /* Create an array of locationTypes based on location data.
