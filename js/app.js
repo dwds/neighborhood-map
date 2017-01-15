@@ -155,8 +155,8 @@ function createInfoWindow(location) {
       '" alt="' + location.name + ' by Instagram user ' +
       location.instaPic.userName +
       '"></a><figcaption>Photo by <a target="_blank" href="' +
-      location.instaPic.userLink + '">' + location.instaPic.userName +
-      '</a></figcaption></figure>';
+      location.instaPic.userLink + '">@' + location.instaPic.userName +
+      '</a> on Instagram</figcaption></figure>';
   }
   infoContent += '</div>';
   // create infoWindow
