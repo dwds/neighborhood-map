@@ -121,7 +121,7 @@ var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
 
-function getInstaPic(location) {
+function getInstaPic(location, cb) {
   $.ajax({
     url: QUERY_BASE + location.instaID + QUERY_PATH,
     dataType: "jsonp",
@@ -144,16 +144,43 @@ function getInstaPic(location) {
         // Something wrong with the query
         location.instaPic.error = "Could not access Instagram";
       }
+      if(cb) {
+        cb(location);
+      }
     },
     error: function (result, status, err){
       // ajax request failed
       location.instaPic.error = "Could not access Instagram";
+      if(cb) {
+        cb(location);
+      }
     }
   });
 }
 
+function createInfoWindow(location) {
+  var contentString = '<div class="info-window">';
+  contentString += '<p class="info-title">' + location.name + '</p>';
+  if(location.instaPic.error) {
+    contentString += '<p class="info-error">' + location.instaPic.error +
+      '</p>';
+  } else {
+    contentString += '<figure><a href="' + location.instaPic.imgLink +
+      '"><img src="' + location.instaPic.imgSrc + '" alt="' + location.name
+      + ' by Instagram user ' + location.instaPic.userName +
+      '"></a><figcaption>Photo by <a href="' + location.instaPic.userLink +
+      '">' + location.instaPic.userName + '</a></figcaption></figure>';
+  }
+  contentString += '</div>';
+  location.infoContent = contentString;
+  // create infoWindow
+  location.infoWindow = new google.maps.InfoWindow({
+    content: location.infoContent
+  });
+}
+
 $.each(locations, function(key, location) {
-  getInstaPic(location);
+  getInstaPic(location, createInfoWindow);
 });
 
 /* Create an array of locationTypes based on location data.
@@ -168,7 +195,6 @@ $.each(locations, function(key, location) {
     }
   });
 });
-
 
 // Google map
 var map;
@@ -187,11 +213,6 @@ function initMap() {
       map: map,
       title: location.name,
       label: location.name[0]
-    });
-    // create infoWindow
-    location.infoWindow = new google.maps.InfoWindow({
-    //  content: location.name
-      content: '<figure><img src="https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/15877252_252258305187798_8849612120057184256_n.jpg?ig_cache_key=MTQyNjUyNjc5OTYwNTQ3NDM3MQ%3D%3D.2"><figcaption>' + location.name + '</figcaption>'
     });
     location.marker.addListener('click', function() {
       showInfo(location);
