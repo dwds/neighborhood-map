@@ -207,10 +207,9 @@ function initMap() {
     // create marker, and place it on map by default
     location.marker = new google.maps.Marker({
       position: location.position,
-      // setting map value to null will remove marker from map
       map: map,
       title: location.name,
-      label: location.name[0]
+      icon: "http://maps.google.com/mapfiles/marker" + location.name[0] + ".png"
     });
     location.marker.addListener('click', function() {
       showInfo(location);
