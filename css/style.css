@@ -10,8 +10,23 @@ h1,
 h2 {
   font-family: 'Vollkorn', serif;
   font-weight: normal;
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+.subheading {
+  display: block;
 }
 
 #map {
-  height: 100%;
+  height: 100vh;
 }
