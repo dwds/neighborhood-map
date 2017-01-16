@@ -187,8 +187,8 @@ var map;
 function initMap() {
   // initialize map
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 38.579166, lng: -90.28124},
-    zoom: 15
+    center: {lat: 38.575149, lng: -90.283556},
+    zoom: 16
   });
   // setup map info for each location
   $.each(locations, function(key, location) {
