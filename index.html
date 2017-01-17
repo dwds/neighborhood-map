@@ -22,13 +22,13 @@
            Selected option will change the value of filter. -->
       Filter: <select data-bind="options: locationTypes, value: filter"></select>
     </p>
-    <p class="toggle-list">
-      <a href="#">show list</a>
+    <p>
+      <a class="toggle-list" href="#">show list</a>
     </p>
 
     <!-- Create a list view based on the names in the current locationList -->
-    <div class="list-menu toggle-list">
-      <a href="#" class="close">×</a>
+    <div class="list-menu">
+      <a href="#" class="close toggle-list">×</a>
       <ul class="location-list" data-bind="foreach: locationList">
         <li><a href="#" data-bind="text: name, click: showInfo"></a></li>
       </ul>
@@ -50,17 +50,17 @@
 
   <!-- slideout menu -->
   <script type="text/javascript">
-    $(document).ready(function() {
-      var $toggleList = $('.toggle-list');
-      var $listMenu = $('.list-menu');
-      var $locationList = $('.location-list');
-      $toggleList.add($locationList).on('click', 'a', function(e) {
+    var $toggleList = $('.toggle-list');
+    var $listMenu = $('.list-menu');
+    var $locationList = $('.location-list');
+    $toggleList.on('click', toggleMenu);
+    $locationList.on('click', 'a', toggleMenu);
+
+    function toggleMenu(e) {
+      e.preventDefault();
       //  $(this).toggleClass('button-open');  // change style of button
-        console.log('event triggered');
-        e.preventDefault();
-        $listMenu.toggleClass('list-show');
-      });
-    });
+      $listMenu.toggleClass('list-show');
+    }
   </script>
 
   </body>
