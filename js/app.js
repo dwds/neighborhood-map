@@ -205,8 +205,9 @@ function initMap() {
   });
 }
 
-// animate location's marker and open its infoWindow
+// center map on location, open its infoWindow, and animate its marker
 function showInfo(location) {
+  map.panTo(location.position);
   location.infoWindow.open(map, location.marker);
   if (location.marker.getAnimation() == null) {
     location.marker.setAnimation(google.maps.Animation.BOUNCE);
