@@ -27,8 +27,8 @@
     </p>
 
     <!-- Create a list view based on the names in the current locationList -->
-    <div class="list-menu">
-      <a href="#" class="close toggle-list">×</a>
+    <div class="list-menu toggle-list">
+      <a href="#" class="close">×</a>
       <ul class="location-list" data-bind="foreach: locationList">
         <li><a href="#" data-bind="text: name, click: showInfo"></a></li>
       </ul>
@@ -56,6 +56,7 @@
       var $locationList = $('.location-list');
       $toggleList.add($locationList).on('click', 'a', function(e) {
       //  $(this).toggleClass('button-open');  // change style of button
+        console.log('event triggered');
         e.preventDefault();
         $listMenu.toggleClass('list-show');
       });
