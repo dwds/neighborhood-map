@@ -47,12 +47,15 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqnm-1Qg9K4y8hy6xtd7asPVvRKdMzZ34&v=3&callback=initMap">
   </script>
 
+  <!-- slideout menu -->
   <script type="text/javascript">
     $(document).ready(function() {
       var $toggleList = $('.toggle-list');
       var $listMenu = $('.list-menu');
-      $toggleList.on('click', function() {
+      var $locationList = $('.location-list');
+      $toggleList.add($locationList).on('click', 'a', function(e) {
       //  $(this).toggleClass('button-open');  // change style of button
+        e.preventDefault();
         $listMenu.toggleClass('list-show');
       });
     });
