@@ -21,11 +21,17 @@
            Selected option will change the value of filter. -->
       Filter: <select data-bind="options: locationTypes, value: filter"></select>
     </p>
+    <p class="toggle-list">
+      <a href="#">show list</a>
+    </p>
 
     <!-- Create a list view based on the names in the current locationList -->
-    <ul class="location-list" data-bind="foreach: locationList">
-      <li><a href="#" data-bind="text: name, click: showInfo"></a></li>
-    </ul>
+    <div class="list-menu">
+      <a href="#" class="close toggle-list">×</a>
+      <ul class="location-list" data-bind="foreach: locationList">
+        <li><a href="#" data-bind="text: name, click: showInfo"></a></li>
+      </ul>
+    </div>
 
   <!-- Google map container -->
   <div id="map"></div>
@@ -39,6 +45,17 @@
   <script src="js/app.js"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqnm-1Qg9K4y8hy6xtd7asPVvRKdMzZ34&v=3&callback=initMap">
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var $toggleList = $('.toggle-list');
+      var $listMenu = $('.list-menu');
+      $toggleList.on('click', function() {
+      //  $(this).toggleClass('button-open');  // change style of button
+        $listMenu.toggleClass('list-show');
+      });
+    });
   </script>
 
   </body>
