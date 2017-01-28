@@ -105,7 +105,7 @@ var locations = [
 
 // Instagram API
 // URL query parts
-var ACCESS_TOKEN = "4052520118.2588c91.e7d003c2ba2d4f18a4d81947ccbe7fe2";
+var ACCESS_TOKEN = config.IG_KEY; // Load API key from config file
 var QUERY_BASE = "https://api.instagram.com/v1/locations/";
 var QUERY_PATH = "/media/recent?access_token=" + ACCESS_TOKEN;
 
