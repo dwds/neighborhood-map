@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Catamaran', sans-serif;
+  background-color: #f8f8ff;
 }
 
 h1,
@@ -43,7 +44,7 @@ h2 {
   display: block;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+  background: #f8f8ff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
   background-origin: content-box;
   border: 6px solid #12548a;
   margin: 0 20px 20px 20px;
@@ -63,7 +64,7 @@ label {
   text-decoration: none;
   margin: 0 20px;
   background-color: #12548a;
-  color: white;
+  color: #f8f8ff;
   padding: 10px;
   border-radius: 10px;
 }
@@ -93,19 +94,19 @@ label {
 }
 
 .location-list a {
-  color: white;
+  color: #f8f8ff;
   font-size: 1.2rem;
 }
 
 .close {
-  color: white;
+  color: #f8f8ff;
   font-size: 30px;
   text-decoration: none;
   width: 50px;
   height: 50px;
   text-align: center;
   line-height: 50px;
-  border: 2px solid white;
+  border: 2px solid #f8f8ff;
   position: absolute;
   top: 20px;
   right: 20px;
