@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Princeton Heights, St. Louis | Points of Interest</title>
+    <!-- Font Awesome CDN for font icons-->
+    <script src="https://use.fontawesome.com/acc3875cad.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Catamaran|Vollkorn" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -20,10 +22,11 @@
     <p>
       <!-- Pull from list of locationTypes to create select menu options.
            Selected option will change the value of filter. -->
-      <label>Filter</label> <select class="filter-select" data-bind="options: locationTypes, value: filter"></select>
+      <label for="filter-select">Select location type</label> <select class="filter-select" id="filter-select" data-bind="options: locationTypes, value: filter"></select>
     </p>
     <p>
-      <a class="toggle-list" href="#">show list</a>
+      <a class="toggle-list" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>
+show list</a>
     </p>
 
     <!-- Create a list view based on the names in the current locationList -->
