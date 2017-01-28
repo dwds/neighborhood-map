@@ -2,8 +2,8 @@ var locations = [
   {
     name: 'Smoking Barrels',
     position: {
-      lat: 38.579166,
-      lng: -90.28124
+      lat: 38.578689,
+      lng: -90.282242
     },
     instaID: 85031244,
     instaPic: {},
