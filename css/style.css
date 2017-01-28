@@ -18,11 +18,8 @@ body {
 
 h1,
 h2 {
-  font-family: 'Vollkorn', serif;
-  font-weight: normal;
-  margin: 0;
-  text-align: center;
-  line-height: 1.5;
+  margin: 10px 0 0 20px;
+  line-height: 1.4;
 }
 
 h1 {
@@ -117,5 +114,33 @@ label {
 
 .list-show {
     margin-left: 0;
-    box-shadow: 4px 2px 15px 1px #b9adad;
+}
+
+/* MEDIA QUERIES */
+/*@media screen and (min-width: 1150px) {*/
+@media screen and (min-width: 790px) {
+  .list-menu {
+    margin: 0;
+  }
+
+  .list-view-link,
+  .close {
+    display: none;
+  }
+
+  #map {
+    width: calc(100% - 350px);
+    float: right;
+  }
+
+  h1,
+  h2,
+  label,
+  .filter-select {
+    margin-left: 370px;
+  }
+
+  .filter-select {
+    width: calc(100% - 390px);
+  }
 }
