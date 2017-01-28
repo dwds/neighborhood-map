@@ -190,6 +190,15 @@ function initMap() {
     center: {lat: 38.575149, lng: -90.283556},
     zoom: 16
   });
+
+  // keep map centered on window resize
+  // credit: http://hsmoore.com/keep-google-map-v3-centered-when-browser-is-resized/
+  google.maps.event.addDomListener(window, "resize", function() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+  });
+
   // setup map info for each location
   $.each(locations, function(key, location) {
     // create marker, and place it on map by default
