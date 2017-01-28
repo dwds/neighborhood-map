@@ -119,7 +119,7 @@ label {
 
 /* MEDIA QUERIES */
 /*@media screen and (min-width: 1150px) {*/
-@media screen and (min-width: 790px) {
+@media screen and (min-width: 1000px) {
   .list-menu {
     margin: 0;
   }
