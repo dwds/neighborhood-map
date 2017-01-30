@@ -80,8 +80,10 @@ label {
 
 /* LIST VIEW BUTTON */
 .list-view-link {
+  display: block;
+  width: 148px;
   text-decoration: none;
-  margin: 0 20px;
+  margin: 0 20px 20px 20px;
   background-color: #12548a;
   color: #f8f8ff;
   padding: 10px;
