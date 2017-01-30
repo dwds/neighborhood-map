@@ -182,12 +182,12 @@ $.each(locations, function(key, location) {
   });
 });
 
-// Google map
+// Google map`
 var map;
 function initMap() {
   // initialize map
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 38.575149, lng: -90.283556},
+    center: {lat:  38.574149, lng: -90.283556},
     zoom: 16,
     scrollwheel: false // disable scrollwheel zoom
   });
