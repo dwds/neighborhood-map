@@ -119,12 +119,26 @@ function getInstaPic(location) {
         // got a good result (200 = OK)
         if(result.data.length > 0) {
           // if there is at least one pic, get info about first pic
-          location.instaPic.imgSrc = result.data[0].images.thumbnail.url;
-          location.instaPic.creationTime = result.data[0].created_time;
-          location.instaPic.imgLink = result.data[0].link;
-          location.instaPic.userName = result.data[0].user.username;
-          location.instaPic.userLink = "https://www.instagram.com/" + location.instaPic.userName;
-          location.instaPic.error = null;
+          var data = result.data[0];
+          var imgSrc = data.images.thumbnail.url;
+          if(imgSrc) {
+            // if data included the image thumbnail url
+            location.instaPic.imgSrc = imgSrc;
+            location.instaPic.imgLink = data.link || 'https://www.instagram.com/';
+            location.instaPic.userLink = "https://www.instagram.com/";
+            var userName = data.user.username;
+            if(userName) {
+              // if data included username
+              location.instaPic.userName = userName;
+              location.instaPic.userLink += userName;
+            } else {
+              location.instaPic.userName = 'unknown user';
+            }
+            location.instaPic.error = null;
+          } else {
+            // could not find image source
+            location.instaPic.error = "Could not load Instagram image."
+          }
         } else {
           // there were not any pics
           location.instaPic.error = "There are no Intagram pics tagged with this location!";
