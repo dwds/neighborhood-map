@@ -183,7 +183,7 @@ var mapEl = document.getElementById('map');
 
 function mapError() {
   console.log("hey");
-  var error = '<p class="error">Sorry, Google Maps could not be loaded.</p>';
+  var error = '<p class="error">Sorry, could not connect to Google Maps.</p>';
   mapEl.innerHTML = error;
 }
 
