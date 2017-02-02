@@ -165,10 +165,6 @@ function createInfoWindow(location) {
   });
 }
 
-$.each(locations, function(key, location) {
-  getInstaPic(location);
-});
-
 /* Create an array of locationTypes based on location data.
  * For each location, loop through its type array and add
  * any new types to the locationTypes array.
@@ -183,10 +179,18 @@ $.each(locations, function(key, location) {
 });
 
 // Google map
+var mapEl = document.getElementById('map');
+
+function mapError() {
+  console.log("hey");
+  var error = '<p class="error">Sorry, Google Maps could not be loaded.</p>';
+  mapEl.innerHTML = error;
+}
+
 var map;
 function initMap() {
   // initialize map
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapEl, {
     center: {lat:  38.574149, lng: -90.283556},
     zoom: 16,
     scrollwheel: false // disable scrollwheel zoom
@@ -212,6 +216,7 @@ function initMap() {
     location.marker.addListener('click', function() {
       showInfo(location);
     });
+    getInstaPic(location);
   });
 }
 
