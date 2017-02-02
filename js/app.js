@@ -103,6 +103,10 @@ var locations = [
   }
 ];
 
+locations.forEach(function(location) {
+  location.infoContent = "loading…"
+});
+
 // Instagram API
 // URL query parts
 var ACCESS_TOKEN = config.IG_KEY; // Load API key from config file
@@ -147,17 +151,17 @@ function getInstaPic(location) {
         // Something wrong with the query
         location.instaPic.error = "Could not access Instagram";
       }
-      createInfoWindow(location);
+      createInfoContent(location);
     },
     error: function (result, status, err){
       // ajax request failed
       location.instaPic.error = "Could not access Instagram";
-      createInfoWindow(location);
+      createInfoContent(location);
     }
   });
 }
 
-function createInfoWindow(location) {
+function createInfoContent(location) {
   var infoContent = '<div class="info-window">';
   infoContent += '<p class="info-title">' + location.name + '</p>';
   if(location.instaPic.error) {
@@ -173,6 +177,9 @@ function createInfoWindow(location) {
       '</a> on Instagram</figcaption></figure>';
   }
   infoContent += '</div>';
+
+  // TODO: MOVE this
+  // TODO: Use one infowindow and change its content on marker click
   // create infoWindow
   location.infoWindow = new google.maps.InfoWindow({
     content: infoContent
