@@ -49,22 +49,7 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap">
   </script>
-
-  <!-- slideout menu -->
-  <script type="text/javascript">
-    var $toggleList = $('.toggle-list');
-    var $listMenu = $('.list-menu');
-    var $locationList = $('.location-list');
-    $toggleList.on('click', toggleMenu);
-    $locationList.on('click', 'a', toggleMenu);
-
-    function toggleMenu(e) {
-      e.preventDefault();
-      if($(window).width() < 1000) {
-        $listMenu.toggleClass('list-show');
-      }
-    }
-  </script>
+  <script src="js/slider.js"></script>
 
   </body>
 </html>

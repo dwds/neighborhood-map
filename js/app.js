@@ -182,7 +182,7 @@ $.each(locations, function(key, location) {
   });
 });
 
-// Google map`
+// Google map
 var map;
 function initMap() {
   // initialize map
