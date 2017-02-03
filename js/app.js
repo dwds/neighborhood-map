@@ -104,7 +104,7 @@ var locations = [
 ];
 
 locations.forEach(function(location) {
-  location.infoContent = "Connecting to Instagram…"
+  location.infoContent = "Connecting to Instagram…";
 });
 
 // Instagram API
@@ -141,7 +141,7 @@ function getInstaPic(location) {
             location.instaPic.error = null;
           } else {
             // could not find image source
-            location.instaPic.error = "Could not load Instagram image."
+            location.instaPic.error = "Could not load Instagram image.";
           }
         } else {
           // there were not any pics
