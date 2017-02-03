@@ -37,7 +37,7 @@ h2 {
 
 /* MAP */
 #map {
-  height: 700px;
+  min-height: calc(100vh - 50px);
 }
 
 .info-title {
