@@ -104,10 +104,8 @@ var locations = [
 ];
 
 locations.forEach(function(location) {
-  location.infoContent = "loading…"
+  location.infoContent = "Connecting to Instagram…"
 });
-
-// TODO: Fix Insta API error handling
 
 // Instagram API
 // URL query parts
