@@ -276,7 +276,7 @@ var ViewModel = function () {
     if(self.filter() === 'all') {
       locations.forEach(function(location){
         self.locationList.push(location);
-        location.marker.setMap(map);
+        location.marker.setVisible(true);
       });
     } else {
       // for each location ...
@@ -286,10 +286,10 @@ var ViewModel = function () {
           // add location to location list
           self.locationList.push(location);
           // add marker to map
-          location.marker.setMap(map);
+          location.marker.setVisible(true);
         } else {
           // remove marker from map
-          location.marker.setMap(null);
+          location.marker.setVisible(false);
         }
       });
     }
