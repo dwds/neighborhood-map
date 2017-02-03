@@ -187,8 +187,8 @@ function createInfoContent(location) {
  * any new types to the locationTypes array.
  */
 var locationTypes = ['all'];
-$.each(locations, function(key, location) {
-  $.each(location.type, function(key, type){
+locations.forEach(function(location) {
+  location.type.forEach(function(type){
     if($.inArray(type ,locationTypes) === -1) {
       locationTypes.push(type);
     }
@@ -224,7 +224,7 @@ function initMap() {
   });
 
   // setup map info for each location
-  $.each(locations, function(key, location) {
+  locations.forEach(function(location) {
     // create marker, and place it on map by default
     location.marker = new google.maps.Marker({
       position: location.position,
@@ -280,7 +280,7 @@ var ViewModel = function () {
       });
     } else {
       // for each location ...
-      $.each(locations, function(key, location) {
+      locations.forEach(function(location) {
         // if the selected filter value is its list of location types
         if($.inArray(self.filter(), location.type) > -1) {
           // add location to location list
