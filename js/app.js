@@ -194,7 +194,7 @@ var locationTypes = ['all'];
 $.each(locations, function(key, location) {
   $.each(location.type, function(key, type){
     if($.inArray(type ,locationTypes) === -1) {
-      locationTypes.push(type)
+      locationTypes.push(type);
     }
   });
 });
@@ -245,7 +245,7 @@ function initMap() {
 function showInfo(location) {
   map.panTo(location.position);
   location.infoWindow.open(map, location.marker);
-  if (location.marker.getAnimation() == null) {
+  if (location.marker.getAnimation() === null) {
     location.marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function(){
       location.marker.setAnimation(null);
@@ -298,7 +298,7 @@ var ViewModel = function () {
 
   // when the filter value is changed, call the filterLocations method
   self.filter.subscribe(self.filterLocations);
-}
+};
 
 // hook it all up
 ko.applyBindings(new ViewModel());
