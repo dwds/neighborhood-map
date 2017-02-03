@@ -107,6 +107,8 @@ locations.forEach(function(location) {
   location.infoContent = "loading…"
 });
 
+// TODO: Fix Insta API error handling
+
 // Instagram API
 // URL query parts
 var ACCESS_TOKEN = config.IG_KEY; // Load API key from config file
@@ -239,7 +241,6 @@ function initMap() {
 
 // center map on location, open its infoWindow, and animate its marker
 function showInfo(location) {
-  infoWindow.close();
   map.panTo(location.position);
   infoWindow.setContent(location.infoContent);
   infoWindow.open(map, location.marker);
