@@ -242,12 +242,10 @@ function showInfo(location) {
   map.panTo(location.position);
   infoWindow.setContent(location.infoContent);
   infoWindow.open(map, location.marker);
-  if (location.marker.getAnimation() === null) {
-    location.marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function(){
-      location.marker.setAnimation(null);
-    }, 700);
-  }
+  location.marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){
+    location.marker.setAnimation(null);
+  }, 700);
 }
 
 var ViewModel = function () {
