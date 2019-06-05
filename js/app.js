@@ -228,7 +228,7 @@ function initMap() {
       position: location.position,
       map: map,
       title: location.name,
-      icon: "http://maps.google.com/mapfiles/marker" + location.name[0] + ".png"
+      icon: "https://maps.google.com/mapfiles/marker" + location.name[0] + ".png"
     });
     location.marker.addListener('click', function() {
       showInfo(location);
