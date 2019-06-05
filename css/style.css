@@ -29,6 +29,9 @@ header {
 
 .insta-notice {
   margin: 20px;
+  padding: 20px;
+  border: 6px solid hsl(10, 100%, 50%);
+  border-radius: 10px;
 }
 
 .insta-notice strong {
