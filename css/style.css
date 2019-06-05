@@ -27,7 +27,7 @@ header {
   margin: 20px 0 0 20px;
 }
 
-.insta-notice {
+#insta-notice {
   position: relative;
   margin: 20px;
   padding: 27px 27px 20px 20px;
@@ -35,11 +35,11 @@ header {
   border-radius: 10px;
 }
 
-.insta-notice strong {
+#insta-notice strong {
   color: hsl(10, 100%, 50%);
 }
 
-.dismiss {
+#dismiss {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -205,7 +205,7 @@ label {
 
   header,
   label,
-  .insta-notice,
+  #insta-notice,
   .filter-select {
     margin-left: 370px;
   }
