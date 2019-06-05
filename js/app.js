@@ -149,13 +149,13 @@ function getInstaPic(location) {
         }
       } else {
         // Something wrong with the query
-        location.instaPic.error = "Could not access Instagram";
+        location.instaPic.error = "Could not access Instagram. <br>An Instagram post would appear here. <br>The Instagram API has been deprecated :(";
       }
       createInfoContent(location);
     },
     error: function (result, status, err){
       // ajax request failed
-      location.instaPic.error = "Could not access Instagram";
+      location.instaPic.error = "Could not access Instagram. <br>An Instagram post would appear here. <br>The Instagram API has been deprecated :(";
       createInfoContent(location);
     }
   });

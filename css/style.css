@@ -27,6 +27,14 @@ header {
   margin: 20px 0 0 20px;
 }
 
+.insta-notice {
+  margin: 20px;
+}
+
+.insta-notice strong {
+  color: hsl(10, 100%, 50%);
+}
+
 h1,
 h2 {
   margin: 0;
@@ -178,6 +186,7 @@ label {
 
   header,
   label,
+  .insta-notice,
   .filter-select {
     margin-left: 370px;
   }
