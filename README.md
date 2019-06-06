@@ -7,7 +7,8 @@ This is a map of points of interest in the [Princeton Heights neighborhood](http
 *After I created this project, Instagram deprecated the part of their API that allows accessing public posts, so that part of the app no longer functions! I have left it in for demonstration purposes.
 
 ## Run the app
-To run the app, just open the 'index.html' file in a web browser! (You need to be connected to the internet.) Select a location filter from the menu, and click on locations to see photos.
+View this project online at [https://derekds.com/dev/neighborhood-map/](https://derekds.com/dev/neighborhood-map/).
+Select a location filter from the menu, and click on locations to see photos.
 
 ## Who did what?
 * [Derek Dadian-Smith](https://github.com/dwds) (that's me) wrote this thing from scratch.
